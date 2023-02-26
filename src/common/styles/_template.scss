@@ -1,0 +1,16 @@
+%one-line{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin:auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

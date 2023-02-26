@@ -1,0 +1,30 @@
+@use "/src/common/styles/template" as *;
+@use "/src/common/styles/colors" as colors;
+@use "/src/common/styles/mixins" as mx;
+@import "src/common/styles/colors";
+
+$r: 15px;
+
+.container{
+  @extend .flex-column;
+  width: 95%;
+  min-width: 200px;
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+  background-color: colors.$color-main;
+  color: colors.$color-text;
+  >* {
+    text-align: center;
+  }
+  .btn {
+    width: 150px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: colors.$color-text;
+    color: colors.$color-main;
+    border: none;
+
+    @include mx.border-radius($r);
+  }
+}
