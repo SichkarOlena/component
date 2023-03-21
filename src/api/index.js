@@ -3,7 +3,7 @@ import { configRandomUser } from "../configs";
 
 export const getRandomUsers = (options={}) => {
     const defaultOptions = {
-        page:1,
+        page: 1,
         format: configRandomUser.FORMAT,
         nat: 'gb',
         results: configRandomUser.AMOUNT,

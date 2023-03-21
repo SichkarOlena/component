@@ -1,48 +1,31 @@
 import React from "react";
-import styles from './UserCard.module.css'
-import PropTypes from "prop-types";
+import styles from './UserProfile.module.scss'
+import cx from "classnames";
+import {UserContext, ThemeContext} from "../../../contexts";
+import CONSTANTS from "../../../constants";
+
+const {THEMES} = CONSTANTS;
 
 const UserProfile = (props) => {
-    const {
-        user: { id, firstName, lastName, isSelected },
-        userSelector,
-    } = props;
-    const viewUser = ({id, firstName, lastName}) => (
-        <article className={styles.article} style={style} onClick={handleSelector}>
-            <h3 className={styles.h3}>
-                <em>{id}) </em>
-                {firstName} {lastName}
-            </h3>
-        </article>
-    );
     return (
-        <UserContext.Consumer>
-            {viewUser}
-            </UserContext.Consumer>
+        <ThemeContext.Consumer>
+            {(theme) => {
+                const articleClasses = cx(styles.article, {
+                    [styles.light]: theme === THEMES.LIGHT,
+                    [styles.dark]: theme === THEMES.DARK,
+                })
+                return (
+                    <UserContext.Consumer>
+                        {({id, firstName, lastName}) => (
+                            <article className={articleClasses}/>
+
+                        )}
+                    </UserContext.Consumer>
+                )
+            }}
+        </ThemeContext.Consumer>
     );
-};
-
-UserProfile.defaultProps = {
-    user: {
-        id: 0,
-        firstName: 'noname',
-        lastName: 'noname',
-        isSelected: true,
-    },
-
-    userSelector: ()=>{}
-};
 
 
-const userShape = PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    isSelected: PropTypes.bool,
-});
-UserProfile.propTypes = {
-    user: userShape.isRequired,
-    userSelector: PropTypes.func,
-};
-
+}
 export default UserProfile;
