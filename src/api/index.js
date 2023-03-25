@@ -23,5 +23,15 @@ export const getRandomUsers = (options={}) => {
 
 };
 
+export const getJsonUsers = () =>
+    fetch("/data/users.json")
+        .then((res)=> res.json());
+
+
+export const getJsonPhones = () =>
+    fetch("/data/phones.json")
+        .then((res)=> res.json());
+
+
 
 // "https://randomuser.me/api/?results=10&seed=fd2022-2-ajax&page=currentPage")
